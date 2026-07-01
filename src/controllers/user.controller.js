@@ -149,6 +149,7 @@ const loginUser=async(req,res)=>{
 }
 
 const logoutUser=async (req,res) => {
+    
     await User.findByIdAndUpdate(req.user._id,
         {
             $set:{
@@ -175,6 +176,7 @@ const logoutUser=async (req,res) => {
 const refreshAccessToken=async (req,res)=>{
 
     
+
     const incomingRefreshToken=req.cookies?.refreshToken || req.body?.refreshToken
     if(!incomingRefreshToken) {
         throw new ApiError(400,"token not found")
@@ -208,4 +210,7 @@ const refreshAccessToken=async (req,res)=>{
         },"New Access Token generated")
     )
 }
+
+
+
 export {registerUser,loginUser,logoutUser,refreshAccessToken}

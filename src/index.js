@@ -4,8 +4,8 @@ const result=dotenv.config({
     path:"./.env"
 })
 
-console.log(result);
-console.log(process.env.CLOUDINARY_API_KEY);
+//console.log(result);
+//console.log(process.env.CLOUDINARY_API_KEY);
 
 import connectDB from './db/index.js'
 import { app } from './app.js';

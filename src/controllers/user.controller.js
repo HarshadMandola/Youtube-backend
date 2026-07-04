@@ -4,7 +4,7 @@ import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js"
 import jwt from "jsonwebtoken"
-
+import mongoose from "mongoose"
 
 const generateAccessAndRefreshToken= async(userId)=>{
     try{
@@ -215,7 +215,7 @@ const refreshAccessToken=async (req,res)=>{
 const ChangeCurrentPassword=async(req,res)=>{
 
     const {oldPassword,newPassword}=req.body
-    const user=User.findById(req.user._id)
+    const user=await User.findById(req.user._id)
     const isPasswordValid=await user.isPasswordCorrect(oldPassword)
     if(!isPasswordValid){
         throw new ApiError(400,"wrong password enterd")
@@ -241,7 +241,7 @@ const updateAccountDetails=async (req,res) => {
 
     const user=await User.findByIdAndUpdate(req.user?._id,{
         $set:{
-            fullname,email
+            fullName,email
         }
     },{new:true}).select("-password")
 
@@ -438,4 +438,5 @@ export {
     updateUserCoverImage,
     updateAccountDetails,
     getWatchHistory,
+    getUserChannelProfile,
 }

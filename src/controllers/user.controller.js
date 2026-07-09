@@ -5,7 +5,7 @@ import { ApiResponse } from "../utils/ApiResponse.js"
 import { verifyJWT } from "../middlewares/auth.middleware.js"
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose"
-
+ 
 const generateAccessAndRefreshToken= async(userId)=>{
     try{
         const user=await User.findById(userId)

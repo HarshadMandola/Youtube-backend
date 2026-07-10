@@ -22,4 +22,10 @@ app.use("/api/v1/users",userRouter)
 import videoRouter from './routes/video.routes.js'
 app.use("/api/v1/users/video",videoRouter)
 
+import tweetRouter from './routes/tweet.routes.js'
+app.use("/api/v1/users/tweet",tweetRouter)
+
+import subscriptionRouter from "./routes/subscription.routes.js"
+app.use("/api/v1/users/subscription",subscriptionRouter)
+
 export {app}

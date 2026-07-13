@@ -25,4 +25,4 @@ const likeSchema=new Schema({
 
 
 
-export const Like=Schema.model("Like",likeSchema)
+export const Like=mongoose.model("Like",likeSchema)

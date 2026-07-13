@@ -28,4 +28,13 @@ app.use("/api/v1/users/tweet",tweetRouter)
 import subscriptionRouter from "./routes/subscription.routes.js"
 app.use("/api/v1/users/subscription",subscriptionRouter)
 
+import playlistRouter from "./routes/playlist.routes.js"
+app.use("/api/v1/users/playlist",playlistRouter)
+
+import likeRouter from "./routes/like.routes.js"
+app.use("/api/v1/users/like",likeRouter)
+
+import commentRouter from "./routes/comment.routes.js"
+app.use("/api/v1/users/comment",commentRouter)
+
 export {app}

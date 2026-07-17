@@ -14,7 +14,7 @@ router.route("/publish-video").post(verifyJWT,upload.fields([{
 }]),publishAVideo)
 
 router.route("/get-all-videos").get(verifyJWT,getAllVideos)
-router.route("/c")
+router.route("/:videoId")
 .get(verifyJWT,getVideoById)
 .patch(verifyJWT,upload.single("thumbnailFile"),updateVideo)
 .delete(verifyJWT,deleteVideo)

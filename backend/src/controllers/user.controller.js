@@ -104,7 +104,7 @@ const loginUser=async(req,res)=>{
         //password check
         //access and refresh token
         //send cookie
-        console.log(req.body)
+        //console.log(req.body)
 
         const {email,username,password}=req.body
         if(!(username || email)){
@@ -336,6 +336,14 @@ const getUserChannelProfile=async(req,res)=>{
             }
         },
         {
+            $lookup:{
+                from:"videos",
+                localField:"_id",
+                foreignField:"owner",
+                as:"videos"
+            }
+        },
+        {
             $addFields:{
                 SubscribersCount:{
                     $size:"$subscribers"
@@ -349,7 +357,7 @@ const getUserChannelProfile=async(req,res)=>{
                         then:true,
                         else:false
                     }
-                }
+                },
             }
         },
         {
@@ -362,6 +370,7 @@ const getUserChannelProfile=async(req,res)=>{
                 avatar:1,
                 coverImage:1,
                 email:1,
+                videos:1
             }
         }
     ])

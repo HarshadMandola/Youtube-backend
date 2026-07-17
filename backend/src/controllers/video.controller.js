@@ -72,9 +72,9 @@ const getAllVideos=async(req,res)=>{
         }
     ])
 
-    if(video.lenght===0){
-        throw new ApiError(500,"videos not fetched")
-    }
+    // if(video.lenght===0){
+    //     throw new ApiError(500,"videos not fetched")
+    // }
 
     const videoCount=await Video.countDocuments(filter)
 
@@ -151,7 +151,7 @@ const publishAVideo=async(req,res)=>{
 
 const getVideoById = async (req, res) => {
     //console.log("RRRR ",req)
-    const { videoId } = req.query
+    const { videoId } = req.params
     //console.log("hellllo ",videoId)
     if(!isValidObjectId(videoId)){
         throw new ApiError(400,"invalid videoId")

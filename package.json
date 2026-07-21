@@ -12,7 +12,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon backend/src/index.js"
+    "dev": "nodemon backend/src/index.js",
+    "start": "node backend/src/index.js"
   },
   "devDependencies": {
     "autoprefixer": "^10.5.3",

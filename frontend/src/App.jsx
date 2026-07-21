@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -9,12 +10,19 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/watch/:videoId" element={<Watch />} />
-        <Route path="/channel/:username" element={<Channel />} />
+        <Route path="/watch/:videoId" element={
+          <ProtectedRoute>
+            <Watch />
+          </ProtectedRoute>} />
+        <Route path="/channel/:username" element={
+          <ProtectedRoute>
+            <Channel />
+          </ProtectedRoute>} />
         <Route path="/upload" element={
           <ProtectedRoute>
             <UploadVideo />

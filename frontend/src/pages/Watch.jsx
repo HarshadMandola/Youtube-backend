@@ -10,10 +10,14 @@ function Watch() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [error, setError] = useState("");
+  
+  
 
   const loadVideo = () => {
     getVideoById(videoId)
-      .then((res) => setVideo(res.data))
+      .then((res) => {
+        console.log("Videooo ",video)
+        setVideo(res.data)})
       .catch((err) => setError(err.message));
   };
 
@@ -54,8 +58,8 @@ function Watch() {
       <h1 className="text-xl font-bold mt-4">{video.title}</h1>
       <div className="flex justify-between items-center mt-2 text-sm text-gray-500">
         <p>{video.views} views</p>
-        <button onClick={handleLike} className="px-4 py-1 border rounded-full">
-          👍 Like
+        <button onClick={handleLike} className={`px-4 py-1 border rounded-full ${video.isLiked ?  "bg-gray-200" : "bg-black text-white"}`}>
+          👍 Like {video.likeCount}
         </button>
       </div>
 

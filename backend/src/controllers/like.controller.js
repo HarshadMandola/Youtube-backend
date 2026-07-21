@@ -31,11 +31,11 @@ const toggleVideoLike = async (req, res) => {
         )
 
         return res
-        .status(200)
+        .status(201)
         .json(
             new ApiResponse(
-                200,
-                {},
+                201,
+                {liked:false},
                 "Video unliked successfully"
             )
         )
@@ -52,7 +52,7 @@ const toggleVideoLike = async (req, res) => {
     .json(
         new ApiResponse(
             200,
-            like,
+            {like,liked:true},
             "Video liked successfully"
         )
     )

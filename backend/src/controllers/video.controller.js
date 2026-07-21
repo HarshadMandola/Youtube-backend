@@ -177,12 +177,31 @@ const getVideoById = async (req, res) => {
             }
         },
         {
+            $lookup:{
+                from:"likes",
+                localField:"_id",
+                foreignField:"video",
+                as:"like",
+            }
+        },
+        {
             $addFields:{
                 owner:{
                     $first:"$owner"
+                },
+                likeCount:{
+                    $size:"$like"
+                },
+                isLiked:{
+                    $cond:{
+                        if:{$in:[ new mongoose.Types.ObjectId(req.user._id),"$like.likedBy"]},
+                        then:true,
+                        else:false,
+                    }
                 }
             }
-        }
+        },
+        
     ])
 
     if(video.length===0){
@@ -203,7 +222,7 @@ const getVideoById = async (req, res) => {
     
 
     return res.status(200)
-    .json(new ApiResponse(200,video,"video fetched successfully"))
+    .json(new ApiResponse(200,video[0],"video fetched successfully"))
 }
 
 const updateVideo = async (req, res) => {

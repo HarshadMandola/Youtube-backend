@@ -342,7 +342,7 @@ const getUserChannelProfile=async(req,res)=>{
                 foreignField:"owner",
                 as:"videos"
             }
-        },
+        }, 
         {
             $addFields:{
                 SubscribersCount:{

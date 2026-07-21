@@ -130,6 +130,7 @@ const loginUser=async(req,res)=>{
         const options={
             httpOnly:true,
             secure:true,
+            sameSite: "none",
         }
 
         return res
@@ -195,7 +196,8 @@ const refreshAccessToken=async (req,res)=>{
 
     const option={
         httpOnly:true,
-        secure:true
+        secure:true,
+        sameSite: "none",
     }
 
     const {accessToken,newRefreshToken}=await generateAccessAndRefreshToken(user._id)

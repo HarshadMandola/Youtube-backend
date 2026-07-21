@@ -7,7 +7,7 @@ const app=express()
 
 app.use(cors(
     {
-        origin:"http://localhost:5173",
+        origin:"https://youtube-backend-kappa-orpin.vercel.app",
         credentials:true
     }
 ))
